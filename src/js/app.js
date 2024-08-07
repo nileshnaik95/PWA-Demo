@@ -12,20 +12,22 @@ document
     Notification.requestPermission().then(function (permission) {
       if (permission === 'granted') {
         console.log('Notification permission granted.');
-        messaging
-          .getToken()
-          .then(function (currentToken) {
-            if (currentToken) {
-              console.log('Token:', currentToken);
-            } else {
-              console.log(
-                'No registration token available. Request permission to generate one.'
-              );
-            }
-          })
-          .catch(function (err) {
-            console.log('An error occurred while retrieving token. ', err);
-          });
+        console.log('messaging.getToken()', messaging.getToken());
+        
+        // messaging
+        //   .getToken()
+        //   .then(function (currentToken) {
+        //     if (currentToken) {
+        //       console.log('Token:', currentToken);
+        //     } else {
+        //       console.log(
+        //         'No registration token available. Request permission to generate one.'
+        //       );
+        //     }
+        //   })
+        //   .catch(function (err) {
+        //     console.log('An error occurred while retrieving token. ', err);
+        //   });
       } else {
         console.log('Unable to get permission to notify.');
       }
