@@ -3,6 +3,11 @@ if ('serviceWorker' in navigator) {
     .register('./sw.js')
     .then((reg) => console.log('service worker registered'))
     .catch((err) => console.log('service worker not registered', err));
+
+  navigator.serviceWorker
+    .register('../firebase-messaging-sw.js')
+    .then((reg) => console.log('firebase service worker registered'))
+    .catch((err) => console.log('firebase service worker not registered', err));
 }
 
 // Request permission and get token
@@ -12,25 +17,18 @@ document
     Notification.requestPermission().then(function (permission) {
       if (permission === 'granted') {
         console.log('Notification permission granted.');
-        console.log('messaging.getToken()', messaging.getToken());
-        
-        // messaging
-        //   .getToken()
-        //   .then(function (currentToken) {
-        //     if (currentToken) {
-        //       console.log('Token:', currentToken);
-        //     } else {
-        //       console.log(
-        //         'No registration token available. Request permission to generate one.'
-        //       );
-        //     }
-        //   })
-        //   .catch(function (err) {
-        //     console.log('An error occurred while retrieving token. ', err);
-        //   });
-      } else {
-        console.log('Unable to get permission to notify.');
-      }
+        messaging.getToken({ vapidKey: 'BNAEQxGLlsNnwinPpiN7KpJKfKG8wCBILBz5xAkQf9AjTLMbkTkf365pXxVAPtEdQkysfCqCC34zzEFNrEsGaNA' }).then((currentToken) => {
+          if (currentToken) {
+            console.log('currentToken', currentToken);
+            // Send the token to your server and update the UI if necessary
+          } else {
+            // Show permission request UI
+            console.log('No registration token available. Request permission to generate one.');
+          }
+        }).catch((err) => {
+          console.log('An error occurred while retrieving token. ', err);
+        });
+      } 
     });
   });
 
