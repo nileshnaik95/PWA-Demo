@@ -17,7 +17,7 @@ document
     Notification.requestPermission().then(function (permission) {
       if (permission === 'granted') {
         console.log('Notification permission granted.');
-        messaging.getToken({ vapidKey: 'BNAEQxGLlsNnwinPpiN7KpJKfKG8wCBILBz5xAkQf9AjTLMbkTkf365pXxVAPtEdQkysfCqCC34zzEFNrEsGaNA' }).then((currentToken) => {
+        messaging.getToken({ vapidKey: 'BCg8_mRsrSrIPyiNHTN6jLjuzvKH6dwYv3ElpQhihcEacbUmOzxEhtENTudzOoxcuitT--8yortlUju1scIK4oc' }).then((currentToken) => {
           if (currentToken) {
             console.log('currentToken', currentToken);
             // Send the token to your server and update the UI if necessary
