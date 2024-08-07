@@ -5,7 +5,7 @@ if ('serviceWorker' in navigator) {
     .catch((err) => console.log('service worker not registered', err));
 
   navigator.serviceWorker
-    .register('/PWA-Demo/firebase-messaging-sw.js')
+    .register('../firebase-messaging-sw.js')
     .then((reg) => console.log('firebase service worker registered'))
     .catch((err) => console.log('firebase service worker not registered', err));
 }
