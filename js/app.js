@@ -9,18 +9,27 @@ if ('serviceWorker' in navigator) {
 document
   .getElementById('enable-notifications')
   .addEventListener('click', function () {
-    messaging
-      .requestPermission()
-      .then(function () {
+    Notification.requestPermission().then(function (permission) {
+      if (permission === 'granted') {
         console.log('Notification permission granted.');
-        return messaging.getToken();
-      })
-      .then(function (token) {
-        console.log('Token:', token);
-      })
-      .catch(function (err) {
-        console.log('Unable to get permission to notify.', err);
-      });
+        messaging
+          .getToken()
+          .then(function (currentToken) {
+            if (currentToken) {
+              console.log('Token:', currentToken);
+            } else {
+              console.log(
+                'No registration token available. Request permission to generate one.'
+              );
+            }
+          })
+          .catch(function (err) {
+            console.log('An error occurred while retrieving token. ', err);
+          });
+      } else {
+        console.log('Unable to get permission to notify.');
+      }
+    });
   });
 
 // Handle incoming messages
