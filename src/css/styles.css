@@ -5,6 +5,10 @@
   --title: #FF8816;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 /* layout styles */
 nav{
   background: var(--primary);
@@ -72,4 +76,17 @@ input{
 }
 form .input-field{
   margin-top: 30px;
+}
+
+#enable-notifications {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 120px;
+  height: 120px;
+  background-color: #FF8816;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  padding: 20px;
 }

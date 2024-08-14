@@ -4,8 +4,8 @@
 
 ```json
 {
-  "name": "Food Ninja", // Name of your app, appears on the splash screen
-  "short_name": "FoodNinja", // Appears under the icon after install
+  "name": "Food Cart", // Name of your app, appears on the splash screen
+  "short_name": "FoodCart", // Appears under the icon after install
   "start_url": "index.html",
   "display": "standalone", // Means native; other options can be "browser"
   "background_color": "FFE9D2", // Background color of the splash screen
@@ -112,7 +112,7 @@ const assets = [
   '/img/dish.png',
   'https://fonts.googleapis.com/icon?family=Material+Icons',
   'https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
-  '/pages/fallback.html'
+  'src/pages/fallback.html'
 ]; //all the request urls to cache
 
 self.addEventListener('install', evt => {
@@ -257,3 +257,9 @@ db.enablePersistence().catch(function (err) {
   }
 });
 ```
+
+## 6. Push notifications
+
+Have used firebase cloud messaging to implement push notifications, here is the link to the full documentation
+https://firebase.google.com/docs/cloud-messaging/js/client
+
